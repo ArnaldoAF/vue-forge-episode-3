@@ -35,7 +35,9 @@ const relativeTime = useTimeAgo(() => props.message?.createdAt || new Date())
         <div class="chat-bubble max-w-max w-full bg-white dark:bg-gray-900 prose prose-sm" :class="{
         'dark:bg-gray-700 bg-gray-600 dark:text-inherit text-white': isMine,
       }">
-            <Markdown :source="message?.text" class="w-full"/>
+            <Markdown v-if="message" :source="message?.text" class="w-full"/>
+
+            <slot v-else />
         </div>
     </div>
 </template>  

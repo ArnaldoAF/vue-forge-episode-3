@@ -52,6 +52,7 @@
         <ChatBubble v-for="user in usersTyping" :key="user.id" :user="user">
           <AppLoading />
         </ChatBubble>
+        
       </div>
       <!-- Footer -->
       <footer class="p-2">
@@ -74,7 +75,7 @@
         <div class="h-6 py-1 px-2 text-sm italic">
           <span v-if="usersTyping.length">
             {{ usersTyping.map((user) => user.name).join(" and ") }}
-            {{ usersTyping.length === 1 ? "is" : "are" }} typing
+            {{ usersTyping.length === 1 ? "is" : "are" }} typing...
           </span>
         </div>
       </footer>
@@ -114,6 +115,7 @@ watch(open, () => {
   if (!open.value) return;
   nextTick(() => {
     (input.value as HTMLInputElement).focus();
+    messageBox.value.scrollTop = messageBox.value.scrollHeight;
   });
 });
 
