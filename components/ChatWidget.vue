@@ -48,8 +48,11 @@ const usersTyping = ref<User[]>([]);
 // and in the empty function below
 
 async function handleNewMessage(message: Message) {
+  console.log("handleNewMessage")
   messages.value.push(message);
   usersTyping.value.push(bot.value);
+  console.log(messages.value);
+  console.log(usersTyping.value);
   setTimeout(() => {
     usersTyping.value = [];
     messages.value.push({
